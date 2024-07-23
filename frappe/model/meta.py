@@ -88,9 +88,9 @@ def load_doctype_from_file(doctype):
 	for d in txt.get("permissions", []):
 		d["doctype"] = "DocPerm"
 
-	txt["fields"] = [BaseDocument(d) for d in txt["fields"]]
+	txt["fields"] = [frappe.get_doc(d) for d in txt["fields"]]
 	if "permissions" in txt:
-		txt["permissions"] = [BaseDocument(d) for d in txt["permissions"]]
+		txt["permissions"] = [frappe.get_doc(d) for d in txt["permissions"]]
 
 	return txt
 

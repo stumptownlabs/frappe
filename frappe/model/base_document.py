@@ -424,10 +424,12 @@ class BaseDocument:
 			d[field] = value
 
 		for df in self.meta.fields:
-			if ignore_virtual and df.is_virtual:
+			if df.fieldtype in no_value_fields or df.fieldtype not in self.permitted_fieldnames:
 				continue
 
-			if df.fieldtype in no_value_fields or df.fieldtype not in self.permitted_fieldnames:
+			is_virtual = getattr(df, "is_virtual", False)
+
+			if ignore_virtual and is_virtual:
 				continue
 
 			try:
@@ -440,7 +442,7 @@ class BaseDocument:
 			)
 
 			if value is None:
-				if not df.is_virtual and ignore_nulls:
+				if not is_virtual and ignore_nulls:
 					continue
 
 				if df.not_nullable:
