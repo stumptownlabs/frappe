@@ -781,11 +781,7 @@
    "link_fieldname": "user"
   }
  ],
-<<<<<<< HEAD
- "modified": "2024-03-20 17:15:19.200383",
-=======
  "modified": "2024-07-15 18:40:18.842915",
->>>>>>> 84fd056439 (fix: Allow track changes for Roles and Allowed Modules child tables in User DocType (#26841))
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
